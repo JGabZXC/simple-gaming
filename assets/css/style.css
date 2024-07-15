@@ -1,0 +1,363 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --primary-color: #d6cdcd;
+    --secondary-color: #F34343;
+    --tertiary-color: #222431;
+
+    --primary-accent: #7de2d1;
+    --secondary-accent: #1d1f29;
+
+    --background-color: #36384a;
+
+    --fc-primary: #ECECEC;
+    --fc-secondary: #B4B4B4;
+    --accent: #2F2F2F;
+    --accent-2: #251F89;
+
+    --bg-c-primary: #212121;
+    --bg-c-secondary: #0E1B3B;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Public Sans", sans-serif;
+}
+
+h1 {
+    font-size: 1.65rem;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-c-primary);
+    color: var(--fc-primary);
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+.loader {
+    position: absolute;
+    z-index: 99;
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-c-secondary);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .5s, visibility .5s;
+}
+
+.loading {
+    height: 50px;
+    width: 50px;
+    border: 5px solid;
+    border-radius: 50%;
+    border-color: var(--fc-primary) var(--accent) var(--accent) var(--accent);
+    animation: spinner .90s infinite linear;
+}
+
+.loader.active {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes spinner {
+    from {
+        transform: rotate(0turn);
+    }
+
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+/* -------------------- GLOBAL -------------------- */
+.container {
+    width: min(1200px, 95%);
+    margin: 0 auto;
+    padding-block: 30px;
+}
+
+.topo-p {
+    line-height: 20px;
+    letter-spacing: 1.25px;
+    font-size: 1.15rem;
+    font-weight: 300;
+}
+
+/* -------------------- HEADER -------------------- */
+header {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+}
+
+.navbar {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.logo-con {
+    z-index: 2;
+}
+
+.logo {
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 1.75rem;
+}
+
+.logo span {
+    color: var(--secondary-color);
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-menu li {
+    transition: .75s ease;
+}
+
+.nav-menu a {
+    color: var(--fc-primary);
+    text-decoration: none;
+    font-weight: 700;
+    transition: .55s ease;
+    text-transform: uppercase;
+}
+
+.nav-menu a:hover {
+    color: var(--secondary-color);
+}
+
+.nav-menu li:hover {
+    transform: translateY(-5px);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.bars {
+    height: 3px;
+    width: 30px;
+    background-color: var(--primary-color);
+    margin: 5px;
+    transition: all 0.50s ease;
+}
+
+@media (width <=768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-menu {
+        position: absolute;
+        height: 100vh;
+        width: 100%;
+        margin: 0 -20px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--accent);
+        top: 0;
+        z-index: 1;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.50s ease;
+    }
+
+    .hamburger.active .bars:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bars:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+        background-color: var(--secondary-color);
+    }
+
+    .hamburger.active .bars:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+        background-color: var(--secondary-color);
+    }
+
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+}
+
+/* -------------------- HERO -------------------- */
+.hero-bg {
+    height: 100vh;
+    background: url('../img/main-bg.jfif');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-c-secondary);
+}
+
+.hero-con {
+    width: min(600px, 95%);
+}
+
+.hero-con>* {
+    padding-block: 10px;
+}
+
+@media (width <=920px) {
+    .logo {
+        font-size: 1.25rem;
+    }
+
+    .hero-bg {
+        justify-content: center;
+        background-position: -190px;
+    }
+
+    .hero-con {
+        margin: 0;
+    }
+}
+
+.intro {
+    font-size: 2.25rem;
+}
+
+.hero-con button {
+    border: 0;
+    margin-top: 20px;
+    background-color: var(--secondary-color);
+    color: var(--fc-primary);
+    border-radius: 40px;
+    padding: 15px 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: .55s ease;
+}
+
+.hero-con button:hover {
+    color: var(--secondary-color);
+    background-color: var(--fc-primary);
+}
+
+/* -------------------- ABOUT -------------------- */
+#about p span {
+    color: var(--secondary-color);
+}
+
+#about .container>* {
+    padding: 10px;
+}
+
+/* -------------------- GALLERY -------------------- */
+#gallery {
+    background-color: var(--secondary-color);
+}
+
+#gallery .logo {
+    text-align: center;
+    color: var(--accent);
+    font-size: 2.4rem;
+}
+
+#gallery .gallery-con {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#gallery .gallery-con img {
+    height: 300px;
+    max-width: 595px;
+    border-radius: 16px;
+}
+
+@media (width <=860px) {
+    #gallery .gallery-con img {
+        height: 0%;
+        max-width: 80%;
+    }
+}
+
+/* -------------------- CONTACT -------------------- */
+#contact .container>* {
+    padding-block: 10px;
+}
+
+#contact .email:hover {
+    color: var(--secondary-color);
+}
+
+#contact ul {
+    margin-left: 30px;
+}
+
+#contact ul>* {
+    padding-block: 5px;
+}
+
+#contact li a {
+    color: var(--fc-primary);
+}
+
+#contact li a:hover {
+    color: var(--secondary-color);
+}
+
+/* -------------------- FOOTER -------------------- */
+footer {
+    background-color: var(--bg-c-secondary);
+    padding: 60px;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+footer .container div:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+footer i {
+    color: var(--fc-primary);
+}
+
+footer i:hover {
+    color: var(--secondary-color);
+}
+
+@media (width <=768px) {
+    footer .container {
+        flex-direction: column;
+    }
+}
